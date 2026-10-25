@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>S. Huang — 律师 × AI 开发者</title>
+    <link>https://s-huang.example/</link>
+    <description>八年执业律师为法律行业造 AI 工具：文章、课程与免费开源的器械。</description>
+    <language>zh-CN</language>
+    <lastBuildDate>Sat, 25 Oct 2026 15:00:00 +0800</lastBuildDate>
+    <atom:link href="https://s-huang.example/feed.xml" rel="self" type="application/rss+xml"/>
+
+    <item>
+      <title>当 GPT 读到第 400 页合同：大模型审查的能与不能</title>
+      <link>https://s-huang.example/article.html</link>
+      <guid isPermaLink="true">https://s-huang.example/article.html</guid>
+      <pubDate>Mon, 14 Sep 2026 09:00:00 +0800</pubDate>
+      <description>哪些审查工作可以放心交给 AI，哪些必须留在律师手里——一条划清边界的实务长文。</description>
+    </item>
+    <item>
+      <title>尽调自动化的一年：用 AI 重构 200 小时例行工作</title>
+      <link>https://s-huang.example/article.html</link>
+      <guid isPermaLink="false">dd-automation-2026-08</guid>
+      <pubDate>Sun, 30 Aug 2026 09:00:00 +0800</pubDate>
+      <description>流水线拆解、失败案例与最终留下的东西。</description>
+    </item>
+    <item>
+      <title>法律人的提示词工程：把「审慎」翻译成「约束」</title>
+      <link>https://s-huang.example/article.html</link>
+      <guid isPermaLink="false">prompt-as-clause-2026-06</guid>
+      <pubDate>Fri, 12 Jun 2026 09:00:00 +0800</pubDate>
+      <description>给 AI 的每一条指令，都应当像一条写得严谨的条款。</description>
+    </item>
+    <item>
+      <title>红线比对的本质：从 Word 修订模式说起</title>
+      <link>https://s-huang.example/article.html</link>
+      <guid isPermaLink="false">redline-2026-04</guid>
+      <pubDate>Sun, 19 Apr 2026 09:00:00 +0800</pubDate>
+      <description>一份合同比对工具的设计笔记，写给法律人。</description>
+    </item>
+    <item>
+      <title>工具即方法论：律师为什么需要自己的工具箱</title>
+      <link>https://s-huang.example/article.html</link>
+      <guid isPermaLink="false">skill-as-method-2026-02</guid>
+      <pubDate>Sat, 07 Feb 2026 09:00:00 +0800</pubDate>
+      <description>知识被写成工具的那一刻，才真正可复用。</description>
+    </item>
+    <item>
+      <title>工具发布：文书工坊 3.2</title>
+      <link>https://s-huang.example/tool.html</link>
+      <guid isPermaLink="false">docx-toolkit-3-2</guid>
+      <pubDate>Sun, 19 Apr 2026 18:00:00 +0800</pubDate>
+      <description>比对引擎重写，长文档稳定性提升四成；支持表格内比对。</description>
+    </item>
+  </channel>
+</rss>

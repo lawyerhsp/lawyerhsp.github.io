@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="dark light">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230A1315'/%3E%3Ctext x='50' y='66' font-size='46' text-anchor='middle' fill='%2314C8B8' font-family='Georgia,serif'%3Es.%3C/text%3E%3C/svg%3E">
+<link rel="alternate" type="application/rss+xml" title="S. Huang 的文章" href="feed.xml">
+<meta property="og:site_name" content="S. Huang — 律师 × AI 开发者">
+<meta property="og:type" content="website">
+<meta property="og:title" content="把执业经验，做成工具 — S. Huang">
+<meta property="og:description" content="八年执业律师为法律行业造 AI 工具：文章、课程与免费开源的器械。">
+<meta property="og:image" content="https://s-huang.example/og-index.png">
+<meta property="og:url" content="https://s-huang.example/">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+ {"@type":"WebSite","@id":"https://s-huang.example/#website","url":"https://s-huang.example/","name":"S. Huang — 律师 × AI 开发者","description":"八年执业律师为法律行业造 AI 工具：文章、课程与免费开源的器械。","inLanguage":"zh-CN"},
+ {"@type":"Person","@id":"https://s-huang.example/#person","name":"S. Huang","jobTitle":"律师 / AI 开发者","worksFor":{"@type":"Organization","name":"某某律师事务所（占位）"},"knowsAbout":["法律科技","文书自动化","尽职调查","AI Agent 工程"],"email":"mailto:hello@example.com","sameAs":["https://github.com/lawyerhsp","https://律所官网律师页（占位）","https://微信公众号名片（占位）"],"hasCredential":{"@type":"EducationalOccupationalCredential","name":"律师执业证（编号占位，可在司法行政公示平台核验）"}}
+]}
+</script>
+<title>S. Huang — 律师 × AI 开发者</title>
+<script>
+(function(){
+  var t=new URLSearchParams(location.search).get('theme');
+  if(!t){try{t=localStorage.getItem('theme')}catch(e){}}
+  if(!t){t=window.matchMedia&&matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}
+  document.documentElement.dataset.theme=t;
+})();
+</script>
+<style>
+  :root{
+    --bg:#0A1315; --panel:#132226; --panel-2:#101B1F;
+    --line:#23363C; --line-2:#365059;
+    --text:#E9F4F3; --muted:#8FACB0;
+    --amber:#F0AD3C; --amber-soft:rgba(240,173,60,.42); --amber-bg:rgba(240,173,60,.12);
+    --blue:#38B6D8;  --blue-soft:rgba(56,182,216,.45);  --blue-bg:rgba(56,182,216,.12);
+    --green:#2FD489; --green-soft:rgba(47,212,137,.5);  --green-bg:rgba(47,212,137,.12);
+    --violet:#14C8B8; --violet-soft:rgba(20,200,184,.45);
+    --grad:linear-gradient(92deg,#14C8B8 0%,#38A8FF 100%);
+    --grid:rgba(20,200,184,.04);
+    --shadow:0 8px 26px rgba(0,0,0,.45);
+    --sans:"PingFang SC","Hiragino Sans GB",-apple-system,"Segoe UI",sans-serif;
+  }
+  html[data-theme="light"]{
+    --bg:#F1F8F8; --panel:#FFFFFF; --panel-2:#F8FCFC;
+    --line:#DCEAEB; --line-2:#BAD3D7;
+    --text:#142126; --muted:#5C7A80;
+    --amber:#B57E14; --amber-soft:rgba(181,126,20,.45); --amber-bg:rgba(181,126,20,.10);
+    --blue:#0A7DA6;  --blue-soft:rgba(10,125,166,.4);    --blue-bg:rgba(10,125,166,.08);
+    --green:#0C8F5B; --green-soft:rgba(12,143,91,.45);   --green-bg:rgba(12,143,91,.09);
+    --violet:#0BA8A0; --violet-soft:rgba(11,168,160,.4);
+    --grad:linear-gradient(92deg,#0BA8A0 0%,#0F7AC8 100%);
+    --grid:rgba(11,168,160,.05);
+    --shadow:0 8px 24px rgba(20,80,80,.12);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    background:var(--bg);color:var(--text);
+    font-family:var(--sans);font-size:15px;line-height:1.65;
+    transition:background .25s,color .25s;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+    background:
+      repeating-linear-gradient(90deg,transparent 0 79px,var(--grid) 79px 80px),
+      repeating-linear-gradient(0deg,transparent 0 79px,var(--grid) 79px 80px);
+  }
+  .wrap{position:relative;z-index:1;max-width:840px;margin:0 auto;padding:0 26px 56px}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--violet-soft)}
+
+  /* —— 顶栏：只留一个干净导航 —— */
+  nav{
+    position:sticky;top:0;z-index:20;
+    background:color-mix(in srgb,var(--bg) 88%,transparent);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--line);
+  }
+  @supports not (background:color-mix(in srgb,red,blue)){nav{background:var(--bg)}}
+  nav .bar{max-width:840px;margin:0 auto;padding:12px 26px;display:flex;align-items:baseline;gap:8px}
+  nav .name{font-size:17px;font-weight:700}
+  nav .name i{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  nav .role{font-size:12.5px;color:var(--muted);margin-left:2px}
+  nav .links{margin-left:auto;display:flex;gap:24px;font-size:14px}
+  nav .links a{color:var(--muted);transition:color .15s}
+  nav .links a:hover{color:var(--text)}
+  .toggle{
+    width:30px;height:30px;border-radius:7px;cursor:pointer;align-self:center;
+    border:1px solid var(--line);background:transparent;color:var(--text);
+    font-size:0;display:flex;align-items:center;justify-content:center;
+    transition:border-color .15s;
+  }
+  .toggle::before{content:"☀";font-size:14px}
+  html[data-theme="light"] .toggle::before{content:"☾"}
+  .toggle:hover{border-color:var(--violet-soft)}
+  @media(max-width:640px){nav .role{display:none}nav .links{gap:16px;font-size:13.5px}}
+
+  /* —— 首屏 —— */
+  .hero{padding:52px 0 14px}
+  .hero .kicker{font-size:13px;color:var(--violet);letter-spacing:.22em;margin-bottom:13px}
+  .hero h1{font-size:clamp(30px,5vw,46px);font-weight:750;line-height:1.32}
+  .hero h1 em{
+    font-style:normal;
+    background:var(--grad);-webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;color:transparent;
+  }
+  .hero .sub{margin-top:15px;max-width:34em;color:var(--muted);font-size:14.5px}
+  .hero .legend{margin-top:18px;display:flex;flex-wrap:wrap;gap:8px 20px;font-size:12.5px;color:var(--muted)}
+  .hero .legend span::before{content:"● ";font-size:10px}
+  .hero .legend .a::before{color:var(--amber)}
+  .hero .legend .b::before{color:var(--blue)}
+  .hero .legend .g::before{color:var(--green)}
+
+  /* —— 章节 —— */
+  section{padding-top:44px}
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:16px}
+  .sec-head .no{font-size:13px;color:var(--violet)}
+  .sec-head h2{font-size:20px;font-weight:700;letter-spacing:.05em}
+  .sec-head .rule{flex:1;border-bottom:1px solid var(--line);transform:translateY(-6px)}
+  .sec-head .count{font-size:12.5px;color:var(--muted)}
+
+  /* 文章行 */
+  .post{
+    display:grid;grid-template-columns:70px 1fr auto;gap:14px;align-items:baseline;
+    padding:13px 16px 13px 14px;border:1px solid var(--line);border-left:3px solid var(--amber);
+    background:var(--panel-2);margin-bottom:8px;border-radius:8px;
+    transition:transform .16s,border-color .16s,box-shadow .16s,background .16s;
+  }
+  .post:hover{transform:translateX(5px);border-color:var(--line-2);border-left-color:var(--amber);background:var(--panel);box-shadow:var(--shadow)}
+  .post time{font-size:11.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+  .post time b{display:block;font-size:16px;color:var(--amber);font-weight:650}
+  .post h3{font-size:15.5px;font-weight:650;line-height:1.5}
+  .post p{font-size:12.5px;color:var(--muted);margin-top:2px}
+  .post .meta{font-size:11.5px;color:var(--muted);text-align:right;white-space:nowrap}
+  .post .meta .chip{display:inline-block;border:1px solid var(--amber-soft);color:var(--amber);border-radius:99px;padding:1px 10px;font-size:11px;margin-top:6px}
+  @media(max-width:640px){.post{grid-template-columns:58px 1fr}.post .meta{display:none}}
+
+  /* 课程卡 */
+  .courses{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+  .course{
+    border:1px solid var(--line);border-top:3px solid var(--blue);border-radius:8px;
+    background:var(--panel-2);padding:20px 22px 17px;position:relative;
+    transition:transform .16s,border-color .16s,box-shadow .16s;
+  }
+  .course:hover{transform:translateY(-3px);border-color:var(--line-2);border-top-color:var(--blue);box-shadow:var(--shadow)}
+  .course .k{font-size:12px;color:var(--blue);letter-spacing:.08em}
+  .course h3{font-size:17.5px;font-weight:700;margin:8px 0 6px}
+  .course p{font-size:13px;color:var(--muted)}
+  .course .num{position:absolute;top:14px;right:18px;font-size:27px;font-weight:700;color:var(--blue);opacity:.5}
+
+  /* 工具卡 */
+  .tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:11px}
+  .tool{
+    display:block;border:1px solid var(--line);border-left:3px solid var(--green);border-radius:8px;
+    background:var(--panel-2);padding:15px 17px;
+    transition:transform .16s,border-color .16s,box-shadow .16s;
+  }
+  .tool:hover{transform:translateY(-3px);border-color:var(--line-2);border-left-color:var(--green);box-shadow:var(--shadow)}
+  .tool .name{font-size:15px;font-weight:700;color:var(--green)}
+  .tool h3{font-size:14px;font-weight:650;margin:5px 0 3px}
+  .tool p{font-size:12.5px;color:var(--muted)}
+
+  /* 最近更新 */
+  .updates{border:1px solid var(--line);border-radius:8px;background:var(--panel-2);padding:5px 20px}
+  .updates .u{display:flex;gap:16px;align-items:baseline;padding:9px 0;border-bottom:1px solid var(--line)}
+  .updates .u:last-child{border-bottom:0}
+  .updates .d{flex:none;width:104px;font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+  .updates .t{font-size:13.5px;color:var(--text)}
+
+  /* 关于 */
+  .about{border:1px solid var(--line);border-radius:8px;background:var(--panel-2);display:grid;grid-template-columns:1.4fr 1fr auto;overflow:hidden}
+  .about .bio{padding:20px 24px}
+  .about .bio p{font-size:14px;color:var(--muted)}
+  .about .bio p b{color:var(--text)}
+  .about .facts{border-left:1px solid var(--line);padding:20px 24px;font-size:12.5px}
+  .about .facts div{margin-bottom:10px}
+  .about .facts b{color:var(--violet);font-weight:650;display:block;font-size:11.5px;letter-spacing:.1em;margin-bottom:3px}
+  @media(max-width:700px){.about{grid-template-columns:1fr}.about .facts,.about .qr{border-left:0;border-top:1px solid var(--line)}}
+  /* 二维码联系卡 */
+  .about .qr{border-left:1px solid var(--line);padding:20px 26px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:11px}
+  .about .qr .box{position:relative;width:104px;height:104px;border-radius:8px;background:#fff;border:1px solid var(--line-2);
+    background-image:radial-gradient(#142126 1.2px,transparent 1.3px);background-size:8px 8px;background-position:3px 3px}
+  .about .qr .box i{position:absolute;width:22px;height:22px;border:5px solid #142126;background:#fff;
+    box-shadow:inset 0 0 0 5px #fff, inset 0 0 0 8px #142126}
+  .about .qr .box i:nth-child(1){top:5px;left:5px}
+  .about .qr .box i:nth-child(2){top:5px;right:5px}
+  .about .qr .box i:nth-child(3){bottom:5px;left:5px}
+  .about .qr .tag{position:absolute;bottom:-7px;right:-7px;font-size:10px;background:var(--amber);color:#fff;padding:1px 7px;border-radius:3px;letter-spacing:.08em}
+  .about .qr .cap{text-align:center;font-size:12px;color:var(--muted);line-height:1.8}
+  .about .qr .cap b{color:var(--text);font-weight:650;font-size:12.5px;display:block}
+  .about .bio .sig{margin-top:12px;font-size:12.5px;color:var(--muted);letter-spacing:.03em}
+  /* 热门阅读 */
+  .hot{border:1px solid var(--line);border-radius:8px;background:var(--panel-2);padding:5px 20px}
+  .hot .h{display:flex;gap:14px;align-items:baseline;padding:9px 0;border-bottom:1px solid var(--line)}
+  .hot .h:last-child{border-bottom:0}
+  .hot .r{flex:none;width:22px;height:22px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;align-self:center}
+  .hot .h:nth-child(1) .r{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-soft)}
+  .hot .h:nth-child(2) .r{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-soft)}
+  .hot .h:nth-child(3) .r{background:var(--green-bg);color:var(--green);border:1px solid var(--green-soft)}
+  .hot .t{flex:1;font-size:13.5px;font-weight:600}
+  .hot .h:hover .t{color:var(--violet)}
+  .hot .c{font-size:11.5px;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+
+  footer{margin-top:52px;border-top:1px solid var(--line);padding-top:16px}
+  footer .row{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:12.5px;color:var(--muted)}
+  footer .note{margin-top:10px;font-size:12.5px;color:var(--muted)}
+
+  /* —— 细节层 —— */
+  html{scroll-behavior:smooth}
+  [id]{scroll-margin-top:64px}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--violet);outline-offset:2px;border-radius:4px}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="bar">
+    <span class="name">S<i>.</i> Huang</span><span class="role">律师 × AI 开发者</span>
+    <div class="links">
+      <a href="#writing">文章</a>
+      <a href="#courses">课程</a>
+      <a href="#tools">工具</a>
+      <a href="#about">关于</a>
+    </div>
+    <button class="toggle" id="themeToggle" title="切换明暗">切换主题</button>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<header class="hero">
+  <div class="kicker">写作 · 教学 · 造工具</div>
+  <h1>把执业经验，<br>做成<em>工具</em>。</h1>
+  <p class="sub">做了八年律师，最近三年在为法律行业打造 AI 工具——让合同审查、尽职调查这些繁琐但重要的工作，变得更快、更稳。这里汇集我的文章、课程和作品，写给每一位相信工具能改变法律行业的同行。</p>
+  <div class="legend">
+    <span class="a">文章 × 5</span><span class="b">课程 × 2</span><span class="g">工具 × 6</span>
+  </div>
+</header>
+
+<section id="writing">
+  <div class="sec-head"><span class="no">01</span><h2>文章</h2><span class="rule"></span><span class="count">5 篇</span></div>
+  <a class="post" href="article.html">
+    <time datetime="2026-09-14">2026<b>09</b></time>
+    <div><h3>当 GPT 读到第 400 页合同：大模型审查的能与不能</h3><p>哪些审查工作可以放心交给 AI，哪些必须留在律师手里。</p></div>
+    <div class="meta">约 18 分钟<div><span class="chip">观点</span></div></div>
+  </a>
+  <a class="post" href="article.html">
+    <time datetime="2026-08-30">2026<b>08</b></time>
+    <div><h3>尽调自动化的一年：用 AI 重构 200 小时例行工作</h3><p>流水线拆解、失败案例与最终留下的东西。</p></div>
+    <div class="meta">约 24 分钟<div><span class="chip">实践</span></div></div>
+  </a>
+  <a class="post" href="article.html">
+    <time datetime="2026-06-12">2026<b>06</b></time>
+    <div><h3>法律人的提示词工程：把「审慎」翻译成「约束」</h3><p>给 AI 的每一条指令，都应当像一条写得严谨的条款。</p></div>
+    <div class="meta">约 15 分钟<div><span class="chip">方法</span></div></div>
+  </a>
+  <a class="post" href="article.html">
+    <time datetime="2026-04-19">2026<b>04</b></time>
+    <div><h3>红线比对的本质：从 Word 修订模式说起</h3><p>一份合同比对工具的设计笔记，写给法律人。</p></div>
+    <div class="meta">约 12 分钟<div><span class="chip">技术</span></div></div>
+  </a>
+  <a class="post" href="article.html">
+    <time datetime="2026-02-07">2026<b>02</b></time>
+    <div><h3>工具即方法论：律师为什么需要自己的工具箱</h3><p>知识被写成工具的那一刻，才真正可复用。</p></div>
+    <div class="meta">约 10 分钟<div><span class="chip">观点</span></div></div>
+  </a>
+</section>
+
+<section id="courses">
+  <div class="sec-head"><span class="no">02</span><h2>课程</h2><span class="rule"></span><span class="count">2 门</span></div>
+  <div class="courses">
+    <div class="course">
+      <span class="num">8</span>
+      <div class="k">系列课 · 共八讲</div>
+      <h3>律师的 AI 工作台</h3>
+      <p>从合同比对到文书生成，每讲带你上手做一件立刻能用的工具，零编程基础可学。</p>
+    </div>
+    <div class="course">
+      <span class="num">2</span>
+      <div class="k">线下工作坊 · 两天</div>
+      <h3>尽调实战训练营</h3>
+      <p>两天搭起一套企业风险排查流程，结束带走整套可用的配置与模板。</p>
+    </div>
+  </div>
+</section>
+
+<section id="tools">
+  <div class="sec-head"><span class="no">03</span><h2>工具</h2><span class="rule"></span><span class="count">6 件 · 全部免费开源</span></div>
+  <div class="tools">
+    <a class="tool" href="tool.html"><div class="name">文书工坊</div><h3>法律文书一步成稿</h3><p>像写普通文稿一样起草，自动排出规范的合同、意见书格式。</p></a>
+    <a class="tool" href="tool.html"><div class="name">尽调报告助手</div><h3>企业背景调查报告</h3><p>从工商登记到风险记录，自动整理成一份有出处的报告。</p></a>
+    <a class="tool" href="tool.html"><div class="name">风险扫描器</div><h3>批量排查交易对手</h3><p>失信记录、行政处罚、股权质押，一次查全、按轻重排序。</p></a>
+    <a class="tool" href="tool.html"><div class="name">关系图谱</div><h3>股权与关联方一图看清</h3><p>股东、对外投资、上下游对手方，画成一张可读的图。</p></a>
+    <a class="tool" href="tool.html"><div class="name">底稿表格器</div><h3>尽调底稿自动成表</h3><p>把散落的核查结果整理成规范的 Excel 底稿，公式自动校验。</p></a>
+    <a class="tool" href="tool.html"><div class="name">文书模板库</div><h3>十余套中文法律体例</h3><p>合同、意见书、法规、诉讼文书，常用体例一应俱全。</p></a>
+  </div>
+</section>
+
+<section id="updates">
+  <div class="sec-head"><span class="no">·</span><h2>最近更新</h2><span class="rule"></span></div>
+  <div class="updates">
+    <div class="u"><time class="d" datetime="2026-09-14">2026 年 9 月 14 日</time><span class="t">发布新文章《当 GPT 读到第 400 页合同》</span></div>
+    <div class="u"><time class="d" datetime="2026-08-30">2026 年 8 月 30 日</time><span class="t">风险扫描器 2.0 上线，新增终本案件与限高维度</span></div>
+    <div class="u"><time class="d" datetime="2026-06-02">2026 年 6 月 2 日</time><span class="t">《律师的 AI 工作台》系列课开放报名</span></div>
+    <div class="u"><time class="d" datetime="2026-04-19">2026 年 4 月 19 日</time><span class="t">文书工坊比对引擎重写，长文档不跑偏</span></div>
+  </div>
+</section>
+
+<section id="hot">
+  <div class="sec-head"><span class="no">04</span><h2>热门阅读</h2><span class="rule"></span><span class="count">近 30 天</span></div>
+  <div class="hot">
+    <a class="h" href="article.html"><span class="r">1</span><span class="t">当 GPT 读到第 400 页合同：大模型审查的能与不能</span><span class="c">2.4k 阅读</span></a>
+    <a class="h" href="article.html"><span class="r">2</span><span class="t">法律人的提示词工程：把「审慎」翻译成「约束」</span><span class="c">1.8k 阅读</span></a>
+    <a class="h" href="article.html"><span class="r">3</span><span class="t">尽调自动化的一年：用 AI 重构 200 小时例行工作</span><span class="c">1.2k 阅读</span></a>
+  </div>
+</section>
+
+<section id="about">
+  <div class="sec-head"><span class="no">05</span><h2>关于</h2><span class="rule"></span></div>
+  <div class="about">
+    <div class="bio">
+      <p>白天读合同，晚上写代码。执业第八年，我逐渐确信：<b>经验若不能变成工具，就只属于一个人的加班时间；变成工具，才属于整个行业。</b></p>
+      <p style="margin-top:12px">这个网站是那件事的目录——文章记录判断，课程传递方法，工具是方法本身。</p>
+      <p class="sig">S. Huang ｜ 某某律师事务所（占位） · 争议解决与合规</p>
+    </div>
+    <div class="facts">
+      <div><b>专注领域</b>法律科技 · 文书自动化</div>
+      <div><b>执业年限</b>8 年 · 合同与合规</div>
+      <div><b>正在做</b>尽调流水线第三版</div>
+      <div><b>执业核验</b>司法行政公示平台（占位链接）</div>
+      <div><b>邮件</b>hello@example.com</div>
+    </div>
+    <div class="qr">
+      <div class="box"><i></i><i></i><i></i><span class="tag">占位</span></div>
+      <div class="cap"><b>扫码沟通</b>法律 AI · 非诉业务 · 合作</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="row">
+    <span>© 2026 S. Huang</span>
+    <span>手工制作 · 不追踪访客</span>
+  </div>
+  <p class="note">＊ 本站文章仅代表个人观点，不构成任何法律意见。</p>
+</footer>
+
+</main>
+<script>
+document.getElementById('themeToggle').addEventListener('click',function(){
+  var h=document.documentElement;
+  var nt=h.dataset.theme==='light'?'dark':'light';
+  h.dataset.theme=nt;
+  try{localStorage.setItem('theme',nt)}catch(e){}
+});
+</script>
+</body>
+</html>

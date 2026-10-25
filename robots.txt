@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+
+# AI 爬虫与搜索引擎一律欢迎
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+Sitemap: https://s-huang.example/sitemap.xml
