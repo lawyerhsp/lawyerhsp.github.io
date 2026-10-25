@@ -68,7 +68,7 @@ document.documentElement.dataset.theme=t;})();
   .crumb a:hover{color:var(--text)}
   .crumb span{margin:0 8px;color:var(--line-2)}
   /* 页脚关于条 */
-  .f-about{display:flex;gap:26px;align-items:center;padding:0 0 18px;margin-bottom:18px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+  .f-about{display:flex;gap:26px;align-items:center;padding:0;margin-bottom:14px;flex-wrap:wrap}
   .f-about .who{flex:1;min-width:240px}
   .f-about .who .nm{font-size:15px;font-weight:700;color:var(--text)}
   .f-about .who .nm i{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
@@ -90,9 +90,9 @@ document.documentElement.dataset.theme=t;})();
   .rv.on{opacity:1;transform:none}
   @media (prefers-reduced-motion: reduce){.rv{opacity:1;transform:none;transition:none}}
   /* 全站页脚站点地图 */
-  footer.site{position:relative;z-index:1;width:min(92%,1160px);margin:52px auto 0;padding:24px 26px 40px;
-    border-top:1px solid var(--line);font-size:12.5px;color:var(--muted)}
-  footer.site .bottom{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:12px}
+  footer.site{position:relative;z-index:1;width:min(92%,1160px);margin:48px auto 0;padding:0 0 40px;font-size:12.5px;color:var(--muted)}
+  .fbox{border:1px solid var(--line);border-radius:12px;background:var(--panel-2);padding:18px 22px}
+  footer.site .bottom{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:12px;margin-top:2px}
   footer.site .bottom a:hover{color:var(--text)}
   html{scroll-behavior:smooth}
   [id]{scroll-margin-top:64px}
@@ -192,6 +192,7 @@ document.documentElement.dataset.theme=t;})();
 <div class="cross rv"><a href="/articles/dd-automation-year.html">相关文章：《尽调自动化的一年：用 AI …》→</a><a href="/tools/risk-scan.html">← 风险扫描器</a><a href="/tools/xlsx-author.html">底稿表格器 →</a><a href="/#tools">全部工具</a></div>
 </main>
 <footer class="site">
+<div class="fbox">
 <div class="f-about">
   <div class="who">
     <div class="nm">SP<i>.</i>Huang <span style="font-weight:400;color:var(--muted)">· 律师 × AI 开发者</span></div>
@@ -204,6 +205,7 @@ document.documentElement.dataset.theme=t;})();
   </div>
 </div>
 <div class="bottom"><span>© 2026 SP.Huang · 手工制作 · 不追踪访客</span><span>＊ 本站观点不构成法律意见</span></div>
+</div>
 </footer>
 <script>
 document.getElementById('themeToggle').addEventListener('click',function(){
