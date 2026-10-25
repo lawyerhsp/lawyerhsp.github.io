@@ -67,6 +67,24 @@ document.documentElement.dataset.theme=t;})();
   .crumb{padding:20px 0 0;font-size:13.5px;color:var(--muted);position:relative;z-index:1}
   .crumb a:hover{color:var(--text)}
   .crumb span{margin:0 8px;color:var(--line-2)}
+  /* 页脚关于条 */
+  .f-about{display:flex;gap:26px;align-items:center;padding:0 0 18px;margin-bottom:18px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+  .f-about .who{flex:1;min-width:240px}
+  .f-about .who .nm{font-size:15px;font-weight:700;color:var(--text)}
+  .f-about .who .nm i{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .f-about .who .org{font-size:12.5px;color:var(--muted);margin-top:3px}
+  .f-about .who .lnk{margin-top:10px;display:flex;flex-wrap:wrap;gap:6px 18px;font-size:12.5px}
+  .f-about .who .lnk a{color:var(--muted)}
+  .f-about .who .lnk a:hover{color:var(--violet)}
+  .f-about .qr{flex:none;display:flex;align-items:center;gap:12px}
+  .f-about .qr .box{position:relative;width:64px;height:64px;border-radius:6px;background:#fff;border:1px solid var(--line-2);background-image:radial-gradient(#142126 1px,transparent 1.1px);background-size:5px 5px;background-position:2px 2px}
+  .f-about .qr .box i{position:absolute;width:13px;height:13px;border:3px solid #142126;background:#fff;box-shadow:inset 0 0 0 3px #fff,inset 0 0 0 5px #142126}
+  .f-about .qr .box i:nth-child(1){top:3px;left:3px}
+  .f-about .qr .box i:nth-child(2){top:3px;right:3px}
+  .f-about .qr .box i:nth-child(3){bottom:3px;left:3px}
+  .f-about .qr .tag{position:absolute;bottom:-6px;right:-6px;font-size:9px;background:var(--amber);color:#fff;padding:0 5px;border-radius:2px}
+  .f-about .qr .cap{font-size:11.5px;color:var(--muted);line-height:1.7}
+  .f-about .qr .cap b{color:var(--text);display:block;font-size:12px}
   /* 滚动进场 */
   .rv{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
   .rv.on{opacity:1;transform:none}
@@ -142,7 +160,7 @@ document.documentElement.dataset.theme=t;})();
 <body>
 <nav><div class="bar">
   <a href="/" style="display:flex;align-items:baseline;gap:8px"><span class="name">SP<i>.</i>Huang</span><span class="role">律师 × AI 开发者</span></a>
-  <div class="links"><a href="/">首页</a><a href="/writing.html">文章</a><a href="/courses.html">课程</a><a href="/tools.html" class="on">工具</a><a href="/about.html">关于</a></div>
+  <div class="links"><a href="/">首页</a><a href="/writing.html">文章</a><a href="/courses.html">课程</a><a href="/tools.html" class="on">工具</a></div>
   <button class="toggle" id="themeToggle" title="切换明暗">切换主题</button>
 </div></nav>
 <main class="wrap"><div class="crumb"><a href="/">首页</a><span>›</span><a href="/tools.html">工具</a><span>›</span>风险扫描器</div>
@@ -178,7 +196,19 @@ document.documentElement.dataset.theme=t;})();
 <b>note</b>: 输出仅供辅助，正式文书请以人工复核为准</pre></details>
 <div class="cross rv"><a href="/articles/dd-automation-year.html">相关文章：《尽调自动化的一年：用 AI …》→</a><a href="/tools/dd-report.html">← 尽调报告助手</a><a href="/tools/related-party-map.html">关系图谱 →</a><a href="/#tools">全部工具</a></div>
 </main>
-<footer class="site"><div class="cols">
+<footer class="site">
+<div class="f-about">
+  <div class="who">
+    <div class="nm">SP<i>.</i>Huang <span style="font-weight:400;color:var(--muted)">· 律师 × AI 开发者</span></div>
+    <div class="org">某某律师事务所（占位） · 争议解决与合规 · 执业八年</div>
+    <div class="lnk"><a href="mailto:hello@example.com">邮件</a><a href="https://github.com/lawyerhsp">GitHub</a><a href="#">执业核验（占位）</a><a href="/about.html">关于我 →</a></div>
+  </div>
+  <div class="qr">
+    <div class="box"><i></i><i></i><i></i><span class="tag">占位</span></div>
+    <div class="cap"><b>扫码沟通</b>法律 AI · 非诉业务</div>
+  </div>
+</div>
+<div class="cols">
   <div><b><a href="/writing.html">文 章</a></b><a href="/articles/llm-contract-review.html">当 GPT 读到第 400 …</a><a href="/articles/dd-automation-year.html">尽调自动化的一年：用 AI …</a><a href="/articles/prompt-as-clause.html">法律人的提示词工程：把「审慎…</a><a href="/articles/redline-essence.html">红线比对的本质：从 Word…</a><a href="/articles/tools-as-method.html">工具即方法论：律师为什么需要…</a></div>
   <div><b><a href="/tools.html">工 具</a></b><a href="/tools/docx-toolkit.html">文书工坊 法律文书一步成稿</a><a href="/tools/dd-report.html">尽调报告助手 企业背景调查，一</a><a href="/tools/risk-scan.html">风险扫描器 批量排查交易对手</a><a href="/tools/related-party-map.html">关系图谱 股权与关联方一图</a><a href="/tools/xlsx-author.html">底稿表格器 尽调底稿自动成表</a><a href="/tools/md2contract.html">文书模板库 十余套中文法律体</a></div>
   <div><b><a href="/courses.html">课 程 · 订阅</a></b><a href="/courses/ai-workbench.html">律师的 AI 工作台</a><a href="/courses/agent-dd-bootcamp.html">尽调实战训练营</a><a href="/feed.xml">RSS 订阅</a><a href="https://github.com/lawyerhsp">GitHub</a></div>
