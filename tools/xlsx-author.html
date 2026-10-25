@@ -5,16 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="dark light">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230A1315'/%3E%3Ctext x='50' y='68' font-size='52' text-anchor='middle' fill='%232FD489' font-family='Songti SC,serif'%3E%E5%B7%A5%3C/text%3E%3C/svg%3E">
-<link rel="alternate" type="application/rss+xml" title="S. Huang 的文章" href="/feed.xml">
-<meta property="og:site_name" content="S. Huang — 律师 × AI 开发者">
+<link rel="alternate" type="application/rss+xml" title="SP.Huang 的文章" href="/feed.xml">
+<meta property="og:site_name" content="SP.Huang — 律师 × AI 开发者">
 <meta property="og:type" content="website">
-<meta property="og:title" content="底稿表格器 尽调底稿自动成表 — S. Huang 的工具">
+<meta property="og:title" content="底稿表格器 尽调底稿自动成表 — SP.Huang 的工具">
 <meta property="og:description" content="把散落的核查结果整理成规范的 Excel 底稿：公式自动构造、色标统一、交付前强制重算——交给合伙人不返工的那一种。">
 <meta property="og:image" content="https://lawyerhsp.github.io/og-tool.png">
 <meta property="og:url" content="https://lawyerhsp.github.io/tools/xlsx-author.html">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","name":"底稿表格器","alternateName":"xlsx-author","applicationCategory":"BusinessApplication","operatingSystem":"任意支持 AI 编程助手的环境","softwareVersion":"1.2","license":"https://spdx.org/licenses/MIT.html","inLanguage":"zh-CN","author":{"@id":"https://lawyerhsp.github.io/#person"},"offers":{"@type":"Offer","price":"0","priceCurrency":"CNY"},"description":"把散落的核查结果整理成规范的 Excel 底稿：公式自动构造、色标统一、交付前强制重算——交给合伙人不返工的那一种。"}]}</script>
-<title>底稿表格器 尽调底稿自动成表 — S. Huang 的工具</title>
+<title>底稿表格器 尽调底稿自动成表 — SP.Huang 的工具</title>
 <script>
 (function(){var t=new URLSearchParams(location.search).get('theme');
 if(!t){try{t=localStorage.getItem('theme')}catch(e){}}
@@ -57,6 +57,7 @@ document.documentElement.dataset.theme=t;})();
   nav .links{margin-left:auto;display:flex;gap:24px;font-size:14px}
   nav .links a{color:var(--muted);transition:color .15s}
   nav .links a:hover{color:var(--text)}
+  nav .links a.on{color:var(--text);box-shadow:inset 0 -2px 0 var(--violet)}
   .toggle{width:30px;height:30px;border-radius:7px;cursor:pointer;align-self:center;border:1px solid var(--line);
     background:transparent;color:var(--text);font-size:0;display:flex;align-items:center;justify-content:center;transition:border-color .15s}
   .toggle::before{content:"☀";font-size:14px}
@@ -140,11 +141,11 @@ document.documentElement.dataset.theme=t;})();
 </head>
 <body>
 <nav><div class="bar">
-  <a href="/" style="display:flex;align-items:baseline;gap:8px"><span class="name">S<i>.</i> Huang</span><span class="role">律师 × AI 开发者</span></a>
-  <div class="links"><a href="/#writing">文章</a><a href="/#courses">课程</a><a href="/#tools">工具</a><a href="/#about">关于</a></div>
+  <a href="/" style="display:flex;align-items:baseline;gap:8px"><span class="name">SP<i>.</i>Huang</span><span class="role">律师 × AI 开发者</span></a>
+  <div class="links"><a href="/writing.html">文章</a><a href="/courses.html">课程</a><a href="/tools.html" class="on">工具</a><a href="/about.html">关于</a></div>
   <button class="toggle" id="themeToggle" title="切换明暗">切换主题</button>
 </div></nav>
-<main class="wrap"><div class="crumb"><a href="/">首页</a><span>›</span><a href="/#tools">工具</a><span>›</span>底稿表格器</div>
+<main class="wrap"><div class="crumb"><a href="/">首页</a><span>›</span><a href="/tools.html">工具</a><span>›</span>底稿表格器</div>
 <header class="t-head rv">
   <div class="kicker">工具 · 之五</div>
   <h1>底稿表格器<small>英文原名 xlsx-author · 免费开源 · v1.2</small></h1>
@@ -173,16 +174,16 @@ document.documentElement.dataset.theme=t;})();
 <b>language</b>: zh-CN
 <b>install</b>: npx skills add lawyerhsp/xlsx-author
 <b>capabilities</b>: 尽调底稿、核对表、台账三类标准模板, 勾稽关系写成公式，改数自动联动, 交付前自动重算全部公式，错误格拦截, 输入 / 公式 / 引用三色分明，审阅不迷路
-<b>author</b>: S. Huang (lawyer &amp; AI developer)
+<b>author</b>: SP.Huang (lawyer &amp; AI developer)
 <b>note</b>: 输出仅供辅助，正式文书请以人工复核为准</pre></details>
 <div class="cross rv"><a href="/articles/dd-automation-year.html">相关文章：《尽调自动化的一年：用 AI …》→</a><a href="/tools/related-party-map.html">← 关系图谱</a><a href="/tools/md2contract.html">文书模板库 →</a><a href="/#tools">全部工具</a></div>
 </main>
 <footer class="site"><div class="cols">
-  <div><b>文 章</b><a href="/articles/llm-contract-review.html">当 GPT 读到第 400 …</a><a href="/articles/dd-automation-year.html">尽调自动化的一年：用 AI …</a><a href="/articles/prompt-as-clause.html">法律人的提示词工程：把「审慎…</a><a href="/articles/redline-essence.html">红线比对的本质：从 Word…</a><a href="/articles/tools-as-method.html">工具即方法论：律师为什么需要…</a></div>
-  <div><b>工 具</b><a href="/tools/docx-toolkit.html">文书工坊 法律文书一步成稿</a><a href="/tools/dd-report.html">尽调报告助手 企业背景调查，一</a><a href="/tools/risk-scan.html">风险扫描器 批量排查交易对手</a><a href="/tools/related-party-map.html">关系图谱 股权与关联方一图</a><a href="/tools/xlsx-author.html">底稿表格器 尽调底稿自动成表</a><a href="/tools/md2contract.html">文书模板库 十余套中文法律体</a></div>
-  <div><b>课 程 · 订阅</b><a href="/courses/ai-workbench.html">律师的 AI 工作台</a><a href="/courses/agent-dd-bootcamp.html">尽调实战训练营</a><a href="/feed.xml">RSS 订阅</a><a href="https://github.com/lawyerhsp">GitHub</a></div>
+  <div><b><a href="/writing.html">文 章</a></b><a href="/articles/llm-contract-review.html">当 GPT 读到第 400 …</a><a href="/articles/dd-automation-year.html">尽调自动化的一年：用 AI …</a><a href="/articles/prompt-as-clause.html">法律人的提示词工程：把「审慎…</a><a href="/articles/redline-essence.html">红线比对的本质：从 Word…</a><a href="/articles/tools-as-method.html">工具即方法论：律师为什么需要…</a></div>
+  <div><b><a href="/tools.html">工 具</a></b><a href="/tools/docx-toolkit.html">文书工坊 法律文书一步成稿</a><a href="/tools/dd-report.html">尽调报告助手 企业背景调查，一</a><a href="/tools/risk-scan.html">风险扫描器 批量排查交易对手</a><a href="/tools/related-party-map.html">关系图谱 股权与关联方一图</a><a href="/tools/xlsx-author.html">底稿表格器 尽调底稿自动成表</a><a href="/tools/md2contract.html">文书模板库 十余套中文法律体</a></div>
+  <div><b><a href="/courses.html">课 程 · 订阅</a></b><a href="/courses/ai-workbench.html">律师的 AI 工作台</a><a href="/courses/agent-dd-bootcamp.html">尽调实战训练营</a><a href="/feed.xml">RSS 订阅</a><a href="https://github.com/lawyerhsp">GitHub</a></div>
 </div>
-<div class="bottom"><span>© 2026 S. Huang · 手工制作 · 不追踪访客</span><span>＊ 本站观点不构成法律意见</span></div>
+<div class="bottom"><span>© 2026 SP.Huang · 手工制作 · 不追踪访客</span><span>＊ 本站观点不构成法律意见</span></div>
 </footer>
 <script>
 document.getElementById('themeToggle').addEventListener('click',function(){

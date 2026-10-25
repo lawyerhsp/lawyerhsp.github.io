@@ -5,16 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="dark light">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230A1315'/%3E%3Ctext x='50' y='70' font-size='52' text-anchor='middle' fill='%23F0AD3C' font-family='Georgia,serif'%3E%E2%9C%8E%3C/text%3E%3C/svg%3E">
-<link rel="alternate" type="application/rss+xml" title="S. Huang 的文章" href="/feed.xml">
-<meta property="og:site_name" content="S. Huang — 律师 × AI 开发者">
+<link rel="alternate" type="application/rss+xml" title="SP.Huang 的文章" href="/feed.xml">
+<meta property="og:site_name" content="SP.Huang — 律师 × AI 开发者">
 <meta property="og:type" content="article">
-<meta property="og:title" content="尽调自动化的一年：用 AI 重构 200 小时例行工作 — S. Huang">
+<meta property="og:title" content="尽调自动化的一年：用 AI 重构 200 小时例行工作 — SP.Huang">
 <meta property="og:description" content="流水线拆解、失败案例与最终留下的东西。">
 <meta property="og:image" content="https://lawyerhsp.github.io/og-article.png">
 <meta property="og:url" content="https://lawyerhsp.github.io/articles/dd-automation-year.html">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"尽调自动化的一年：用 AI 重构 200 小时例行工作","description":"流水线拆解、失败案例与最终留下的东西。","datePublished":"2026-08-30","dateModified":"2026-10-25","license":"https://creativecommons.org/licenses/by/4.0/","isAccessibleForFree":true,"inLanguage":"zh-CN","author":{"@id":"https://lawyerhsp.github.io/#person"},"url":"https://lawyerhsp.github.io/articles/dd-automation-year.html"}</script>
-<title>尽调自动化的一年：用 AI 重构 200 小时例行工作 — S. Huang</title>
+<title>尽调自动化的一年：用 AI 重构 200 小时例行工作 — SP.Huang</title>
 <script>
 (function(){var t=new URLSearchParams(location.search).get('theme');
 if(!t){try{t=localStorage.getItem('theme')}catch(e){}}
@@ -57,6 +57,7 @@ document.documentElement.dataset.theme=t;})();
   nav .links{margin-left:auto;display:flex;gap:24px;font-size:14px}
   nav .links a{color:var(--muted);transition:color .15s}
   nav .links a:hover{color:var(--text)}
+  nav .links a.on{color:var(--text);box-shadow:inset 0 -2px 0 var(--violet)}
   .toggle{width:30px;height:30px;border-radius:7px;cursor:pointer;align-self:center;border:1px solid var(--line);
     background:transparent;color:var(--text);font-size:0;display:flex;align-items:center;justify-content:center;transition:border-color .15s}
   .toggle::before{content:"☀";font-size:14px}
@@ -141,11 +142,11 @@ document.documentElement.dataset.theme=t;})();
 <body>
 <div class="progress"></div>
 <nav><div class="bar">
-  <a href="/" style="display:flex;align-items:baseline;gap:8px"><span class="name">S<i>.</i> Huang</span><span class="role">律师 × AI 开发者</span></a>
-  <div class="links"><a href="/#writing">文章</a><a href="/#courses">课程</a><a href="/#tools">工具</a><a href="/#about">关于</a></div>
+  <a href="/" style="display:flex;align-items:baseline;gap:8px"><span class="name">SP<i>.</i>Huang</span><span class="role">律师 × AI 开发者</span></a>
+  <div class="links"><a href="/writing.html" class="on">文章</a><a href="/courses.html">课程</a><a href="/tools.html">工具</a><a href="/about.html">关于</a></div>
   <button class="toggle" id="themeToggle" title="切换明暗">切换主题</button>
 </div></nav>
-<main class="wrap"><div class="crumb"><a href="/">首页</a><span>›</span><a href="/#writing">文章</a><span>›</span>尽调自动化的一年：用 A…</div>
+<main class="wrap"><div class="crumb"><a href="/">首页</a><span>›</span><a href="/writing.html">文章</a><span>›</span>尽调自动化的一年：用 A…</div>
 <header class="a-head rv">
   <div class="kicker">实践 <span>· 二〇26年8月</span></div>
   <h1>尽调自动化的一年：用 AI 重构 200 小时例行工作</h1>
@@ -166,17 +167,17 @@ document.documentElement.dataset.theme=t;})();
 <div class="refs rv"><div class="k">参考与出处</div>
   <ol><li>《律师执业管理办法》相关条文——正式稿将替换为准确条名、文号与官方链接（示意引注）。</li>
   <li>文中实务数据来自作者 2025–2026 年项目内部复盘（占位口径，正式稿附统计说明）。</li></ol>
-  <p class="lic"><b>引用许可</b>：本文以 CC BY 4.0 提供，转载引用请注明「作者：S. Huang · 原文链接 · 访问日期」。</p>
+  <p class="lic"><b>引用许可</b>：本文以 CC BY 4.0 提供，转载引用请注明「作者：SP.Huang · 原文链接 · 访问日期」。</p>
 </div>
 <div class="a-tools rv"><div class="k">本文提到的工具</div><div class="row"><a class="t" href="/tools/dd-report.html">尽调报告助手</a><a class="t" href="/tools/risk-scan.html">风险扫描器</a><a class="t" href="/tools/related-party-map.html">关系图谱</a></div></div>
 <nav class="a-nav rv"><a href="/articles/llm-contract-review.html"><span class="dir">← 上一篇</span><span class="t">当 GPT 读到第 400 页合…</span></a><a href="/articles/prompt-as-clause.html" class="next"><span class="dir">下一篇 →</span><span class="t">法律人的提示词工程：把「审慎」翻…</span></a></nav>
 </main>
 <footer class="site"><div class="cols">
-  <div><b>文 章</b><a href="/articles/llm-contract-review.html">当 GPT 读到第 400 …</a><a href="/articles/dd-automation-year.html">尽调自动化的一年：用 AI …</a><a href="/articles/prompt-as-clause.html">法律人的提示词工程：把「审慎…</a><a href="/articles/redline-essence.html">红线比对的本质：从 Word…</a><a href="/articles/tools-as-method.html">工具即方法论：律师为什么需要…</a></div>
-  <div><b>工 具</b><a href="/tools/docx-toolkit.html">文书工坊 法律文书一步成稿</a><a href="/tools/dd-report.html">尽调报告助手 企业背景调查，一</a><a href="/tools/risk-scan.html">风险扫描器 批量排查交易对手</a><a href="/tools/related-party-map.html">关系图谱 股权与关联方一图</a><a href="/tools/xlsx-author.html">底稿表格器 尽调底稿自动成表</a><a href="/tools/md2contract.html">文书模板库 十余套中文法律体</a></div>
-  <div><b>课 程 · 订阅</b><a href="/courses/ai-workbench.html">律师的 AI 工作台</a><a href="/courses/agent-dd-bootcamp.html">尽调实战训练营</a><a href="/feed.xml">RSS 订阅</a><a href="https://github.com/lawyerhsp">GitHub</a></div>
+  <div><b><a href="/writing.html">文 章</a></b><a href="/articles/llm-contract-review.html">当 GPT 读到第 400 …</a><a href="/articles/dd-automation-year.html">尽调自动化的一年：用 AI …</a><a href="/articles/prompt-as-clause.html">法律人的提示词工程：把「审慎…</a><a href="/articles/redline-essence.html">红线比对的本质：从 Word…</a><a href="/articles/tools-as-method.html">工具即方法论：律师为什么需要…</a></div>
+  <div><b><a href="/tools.html">工 具</a></b><a href="/tools/docx-toolkit.html">文书工坊 法律文书一步成稿</a><a href="/tools/dd-report.html">尽调报告助手 企业背景调查，一</a><a href="/tools/risk-scan.html">风险扫描器 批量排查交易对手</a><a href="/tools/related-party-map.html">关系图谱 股权与关联方一图</a><a href="/tools/xlsx-author.html">底稿表格器 尽调底稿自动成表</a><a href="/tools/md2contract.html">文书模板库 十余套中文法律体</a></div>
+  <div><b><a href="/courses.html">课 程 · 订阅</a></b><a href="/courses/ai-workbench.html">律师的 AI 工作台</a><a href="/courses/agent-dd-bootcamp.html">尽调实战训练营</a><a href="/feed.xml">RSS 订阅</a><a href="https://github.com/lawyerhsp">GitHub</a></div>
 </div>
-<div class="bottom"><span>© 2026 S. Huang · 手工制作 · 不追踪访客</span><span>＊ 本站观点不构成法律意见</span></div>
+<div class="bottom"><span>© 2026 SP.Huang · 手工制作 · 不追踪访客</span><span>＊ 本站观点不构成法律意见</span></div>
 </footer>
 <script>
 document.getElementById('themeToggle').addEventListener('click',function(){
