@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="dark light">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230A1315'/%3E%3Ctext x='50' y='68' font-size='46' text-anchor='middle' fill='%2338B6D8' font-family='Georgia,serif'%3E%E2%98%95%3C/text%3E%3C/svg%3E">
+<link rel="alternate" type="application/rss+xml" title="S. Huang 的文章" href="/feed.xml">
+<meta property="og:site_name" content="S. Huang — 律师 × AI 开发者">
+<meta property="og:type" content="website">
+<meta property="og:title" content="尽调实战训练营 — S. Huang 的课程">
+<meta property="og:description" content="两天搭起一套企业风险排查流程，结束带走整套可用的配置与模板。">
+<meta property="og:image" content="https://lawyerhsp.github.io/og-index.png">
+<meta property="og:url" content="https://lawyerhsp.github.io/courses/agent-dd-bootcamp.html">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Course","name":"尽调实战训练营","description":"两天搭起一套企业风险排查流程，结束带走整套可用的配置与模板。","inLanguage":"zh-CN","provider":{"@type":"Person","name":"S. Huang"},"isAccessibleForFree":false,"url":"https://lawyerhsp.github.io/courses/agent-dd-bootcamp.html"}</script>
+<title>尽调实战训练营 — S. Huang 的课程</title>
+<script>
+(function(){var t=new URLSearchParams(location.search).get('theme');
+if(!t){try{t=localStorage.getItem('theme')}catch(e){}}
+if(!t){t=window.matchMedia&&matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}
+document.documentElement.dataset.theme=t;})();
+</script>
+<style>
+  :root{--bg:#0A1315;--panel:#132226;--panel-2:#101B1F;--line:#23363C;--line-2:#365059;
+    --text:#E9F4F3;--muted:#8FACB0;
+    --amber:#F0AD3C;--amber-soft:rgba(240,173,60,.42);--amber-bg:rgba(240,173,60,.12);
+    --blue:#38B6D8;--blue-soft:rgba(56,182,216,.45);--blue-bg:rgba(56,182,216,.12);
+    --green:#2FD489;--green-soft:rgba(47,212,137,.5);--green-bg:rgba(47,212,137,.12);
+    --violet:#14C8B8;--violet-soft:rgba(20,200,184,.45);
+    --grad:linear-gradient(92deg,#14C8B8 0%,#38A8FF 100%);--grid:rgba(20,200,184,.04);
+    --shadow:0 8px 26px rgba(0,0,0,.45);
+    --sans:"PingFang SC","Hiragino Sans GB",-apple-system,"Segoe UI",sans-serif;
+    --serif:"Songti SC","Noto Serif SC","STSong","SimSun",serif;}
+  html[data-theme="light"]{--bg:#F1F8F8;--panel:#FFFFFF;--panel-2:#F8FCFC;--line:#DCEAEB;--line-2:#BAD3D7;
+    --text:#142126;--muted:#5C7A80;
+    --amber:#B57E14;--amber-soft:rgba(181,126,20,.45);--amber-bg:rgba(181,126,20,.10);
+    --blue:#0A7DA6;--blue-soft:rgba(10,125,166,.4);--blue-bg:rgba(10,125,166,.08);
+    --green:#0C8F5B;--green-soft:rgba(12,143,91,.45);--green-bg:rgba(12,143,91,.09);
+    --violet:#0BA8A0;--violet-soft:rgba(11,168,160,.4);
+    --grad:linear-gradient(92deg,#0BA8A0 0%,#0F7AC8 100%);--grid:rgba(11,168,160,.05);
+    --shadow:0 8px 24px rgba(20,80,80,.12);}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:15px;line-height:1.65;transition:background .25s,color .25s}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background:
+    repeating-linear-gradient(90deg,transparent 0 79px,var(--grid) 79px 80px),
+    repeating-linear-gradient(0deg,transparent 0 79px,var(--grid) 79px 80px)}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--violet-soft)}
+  nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  @supports not (background:color-mix(in srgb,red,blue)){nav{background:var(--bg)}}
+  nav .bar{max-width:840px;margin:0 auto;padding:12px 26px;display:flex;align-items:baseline;gap:8px}
+  nav .name{font-size:17px;font-weight:700}
+  nav .name i{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  nav .role{font-size:12.5px;color:var(--muted);margin-left:2px}
+  nav .links{margin-left:auto;display:flex;gap:24px;font-size:14px}
+  nav .links a{color:var(--muted);transition:color .15s}
+  nav .links a:hover{color:var(--text)}
+  .toggle{width:30px;height:30px;border-radius:7px;cursor:pointer;align-self:center;border:1px solid var(--line);
+    background:transparent;color:var(--text);font-size:0;display:flex;align-items:center;justify-content:center;transition:border-color .15s}
+  .toggle::before{content:"☀";font-size:14px}
+  html[data-theme="light"] .toggle::before{content:"☾"}
+  .toggle:hover{border-color:var(--violet-soft)}
+  @media(max-width:640px){nav .role{display:none}nav .links{gap:16px;font-size:13.5px}}
+  .crumb{padding:20px 0 0;font-size:13.5px;color:var(--muted);position:relative;z-index:1}
+  .crumb a:hover{color:var(--text)}
+  .crumb span{margin:0 8px;color:var(--line-2)}
+  /* 滚动进场 */
+  .rv{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+  .rv.on{opacity:1;transform:none}
+  @media (prefers-reduced-motion: reduce){.rv{opacity:1;transform:none;transition:none}}
+  /* 全站页脚站点地图 */
+  footer.site{position:relative;z-index:1;max-width:840px;margin:52px auto 0;padding:24px 26px 40px;
+    border-top:1px solid var(--line);font-size:12.5px;color:var(--muted)}
+  footer.site .cols{display:grid;grid-template-columns:1.2fr 1.2fr 1fr;gap:8px 28px;margin-bottom:16px}
+  footer.site .cols b{display:block;font-size:11px;letter-spacing:.1em;color:var(--text);margin-bottom:8px;font-weight:650}
+  footer.site .cols a{display:block;padding:2.5px 0;color:var(--muted)}
+  footer.site .cols a:hover{color:var(--violet)}
+  footer.site .bottom{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:12px}
+  footer.site .bottom a:hover{color:var(--text)}
+  @media(max-width:640px){footer.site .cols{grid-template-columns:1fr 1fr}}
+  html{scroll-behavior:smooth}
+  [id]{scroll-margin-top:64px}
+  a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--violet);outline-offset:2px;border-radius:4px}
+  @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}
+    *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}}
+
+  .wrap{max-width:760px;margin:0 auto;padding:0 26px 56px;position:relative;z-index:1}
+  .c-head{padding-top:14px}
+  .c-head .kicker{font-size:12px;color:var(--blue);letter-spacing:.15em;margin-bottom:9px}
+  .c-head h1{font-size:clamp(24px,3.8vw,34px);font-weight:750;line-height:1.35}
+  .c-head .desc{margin-top:12px;font-size:14.5px;color:var(--muted);max-width:34em}
+  .c-head .offer{margin-top:14px;display:inline-block;font-size:13px;color:var(--blue);border:1px solid var(--blue-soft);border-radius:99px;padding:4px 14px;background:var(--blue-bg)}
+  .syllabus{margin-top:26px;border:1px solid var(--line);border-radius:10px;background:var(--panel-2);overflow:hidden}
+  .syllabus .s{display:grid;grid-template-columns:72px 1fr;gap:14px;padding:12px 18px;border-bottom:1px solid var(--line);font-size:14px;align-items:baseline}
+  .syllabus .s:last-child{border-bottom:0}
+  .syllabus .no{font-weight:700;color:var(--blue)}
+  .syllabus .what{color:var(--muted)}
+  .enroll{margin-top:26px;border:1px solid var(--line);border-radius:10px;background:var(--panel-2);padding:16px 20px;font-size:13.5px;color:var(--muted)}
+  .enroll b{color:var(--text)}
+  .cross{margin-top:30px;display:flex;flex-wrap:wrap;gap:10px}
+  .cross a{font-size:12.5px;color:var(--blue);border:1px solid var(--line);border-radius:8px;padding:7px 14px}
+  .cross a:hover{border-color:var(--blue-soft);background:var(--blue-bg)}
+</style>
+</head>
+<body>
+<nav><div class="bar">
+  <a href="/" style="display:flex;align-items:baseline;gap:8px"><span class="name">S<i>.</i> Huang</span><span class="role">律师 × AI 开发者</span></a>
+  <div class="links"><a href="/#writing">文章</a><a href="/#courses">课程</a><a href="/#tools">工具</a><a href="/#about">关于</a></div>
+  <button class="toggle" id="themeToggle" title="切换明暗">切换主题</button>
+</div></nav>
+<main class="wrap"><div class="crumb"><a href="/">首页</a><span>›</span><a href="/#courses">课程</a><span>›</span>尽调实战训练营</div>
+<header class="c-head rv">
+  <div class="kicker">线下工作坊 · 两天</div>
+  <h1>尽调实战训练营</h1>
+  <p class="desc">两天搭起一套企业风险排查流程，结束带走整套可用的配置与模板。</p>
+  <span class="offer">带走整套可部署配置与模板</span>
+</header>
+<section class="rv" style="margin-top:26px"><h2 style="font-size:18px;font-weight:700;margin-bottom:12px">大纲</h2>
+<div class="syllabus"><div class="s"><span class="no">D1 上午</span><span class="what">数据源地图：官方口径与获取方式</span></div><div class="s"><span class="no">D1 下午</span><span class="what">风险口径设计：五维分级与红线</span></div><div class="s"><span class="no">D2 上午</span><span class="what">报告生成：引用规范与复核闭环</span></div><div class="s"><span class="no">D2 下午</span><span class="what">实战演练：真实名单全流程走一遍</span></div></div></section>
+<div class="enroll rv"><b>报名</b>：开课信息与报名通道筹备中（占位）——网站首页扫码沟通可提前登记，RSS 订阅可获开课通知。</div>
+<div class="cross rv"><a href="/courses/ai-workbench.html">另一门课：律师的 AI 工作台 →</a><a href="/#courses">← 返回课程</a></div>
+</main>
+<footer class="site"><div class="cols">
+  <div><b>文 章</b><a href="/articles/llm-contract-review.html">当 GPT 读到第 400 …</a><a href="/articles/dd-automation-year.html">尽调自动化的一年：用 AI …</a><a href="/articles/prompt-as-clause.html">法律人的提示词工程：把「审慎…</a><a href="/articles/redline-essence.html">红线比对的本质：从 Word…</a><a href="/articles/tools-as-method.html">工具即方法论：律师为什么需要…</a></div>
+  <div><b>工 具</b><a href="/tools/docx-toolkit.html">文书工坊 法律文书一步成稿</a><a href="/tools/dd-report.html">尽调报告助手 企业背景调查，一</a><a href="/tools/risk-scan.html">风险扫描器 批量排查交易对手</a><a href="/tools/related-party-map.html">关系图谱 股权与关联方一图</a><a href="/tools/xlsx-author.html">底稿表格器 尽调底稿自动成表</a><a href="/tools/md2contract.html">文书模板库 十余套中文法律体</a></div>
+  <div><b>课 程 · 订阅</b><a href="/courses/ai-workbench.html">律师的 AI 工作台</a><a href="/courses/agent-dd-bootcamp.html">尽调实战训练营</a><a href="/feed.xml">RSS 订阅</a><a href="https://github.com/lawyerhsp">GitHub</a></div>
+</div>
+<div class="bottom"><span>© 2026 S. Huang · 手工制作 · 不追踪访客</span><span>＊ 本站观点不构成法律意见</span></div>
+</footer>
+<script>
+document.getElementById('themeToggle').addEventListener('click',function(){
+  var h=document.documentElement,nt=h.dataset.theme==='light'?'dark':'light';
+  h.dataset.theme=nt;try{localStorage.setItem('theme',nt)}catch(e){}
+});
+</script><script>
+(function(){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){document.querySelectorAll('.rv').forEach(function(e){e.classList.add('on')});return}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}})},{threshold:.08});
+  document.querySelectorAll('.rv').forEach(function(e){io.observe(e)});
+})();
+</script>
+</body>
+</html>

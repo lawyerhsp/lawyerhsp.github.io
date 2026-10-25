@@ -1,36 +1,41 @@
 # S. Huang — 律师 × AI 开发者
 
-> 八年执业律师为法律行业造 AI 工具。站点内容：法律 AI 实务文章、课程、免费开源工具（MIT）。内容为简体中文。
+> 八年执业律师为法律行业造 AI 工具。站点内容：法律 AI 实务文章（5）、课程（2）、免费开源工具（6，MIT）。内容为简体中文，在线地址 https://lawyerhsp.github.io/。
 
-本站同时面向人类读者与 AI 助手：全部内容为静态 HTML，无 JS 渲染依赖，可直接抓取解析。每页含 schema.org JSON-LD 结构化数据；引用请注明作者与原文链接；站内观点不构成法律意见。
+本站同时面向人类读者与 AI 助手：全部静态 HTML、无 JS 渲染依赖，可直接抓取；每页含 schema.org JSON-LD；引用请注明作者与原文链接；观点不构成法律意见。
 
-## 页面
+## 文章（BlogPosting，各页独立 URL 与 og 卡）
 
-- [首页](/index.html): 站点目录——文章列表、课程、工具清单、最近更新、热门阅读、关于与联系方式
-- [文章示例](/article.html): 《当 GPT 读到第 400 页合同：大模型审查的能与不能》——观点长文（BlogPosting），约 18 分钟
-- [工具示例](/tool.html): 文书工坊（docx-toolkit）v3.2——法律文书一步成稿、红线比对、修订留痕；MIT 开源；页内含机器可读清单与安装命令
+- [当 GPT 读到第 400 页合同：大模型审查的能与不能](/articles/llm-contract-review.html)：哪些审查工作可以放心交给 AI，哪些必须留在律师手里——一条划清边界的实务长文。 约18分钟
+- [尽调自动化的一年：用 AI 重构 200 小时例行工作](/articles/dd-automation-year.html)：流水线拆解、失败案例与最终留下的东西。 约24分钟
+- [法律人的提示词工程：把「审慎」翻译成「约束」](/articles/prompt-as-clause.html)：给 AI 的每一条指令，都应当像一条写得严谨的条款。 约15分钟
+- [红线比对的本质：从 Word 修订模式说起](/articles/redline-essence.html)：一份合同比对工具的设计笔记，写给法律人。 约12分钟
+- [工具即方法论：律师为什么需要自己的工具箱](/articles/tools-as-method.html)：知识被写成工具的那一刻，才真正可复用。 约10分钟
 
-## 订阅与站点数据
+## 工具（SoftwareApplication + 机器可读清单）
 
-- [RSS](/feed.xml): 新文章与工具发布
-- [站点地图](/sitemap.xml)
+- [文书工坊 法律文书一步成稿](/tools/docx-toolkit.html)：v3.2 · 安装 `npx skills add lawyerhsp/docx-toolkit`
+- [尽调报告助手 企业背景调查，一键成报告](/tools/dd-report.html)：v2.1 · 安装 `npx skills add lawyerhsp/dd-report`
+- [风险扫描器 批量排查交易对手](/tools/risk-scan.html)：v2.0 · 安装 `npx skills add lawyerhsp/risk-scan`
+- [关系图谱 股权与关联方一图看清](/tools/related-party-map.html)：v1.3 · 安装 `npx skills add lawyerhsp/related-party-map`
+- [底稿表格器 尽调底稿自动成表](/tools/xlsx-author.html)：v1.2 · 安装 `npx skills add lawyerhsp/xlsx-author`
+- [文书模板库 十余套中文法律体例](/tools/md2contract.html)：v1.0 · 安装 `npx skills add lawyerhsp/md2contract`
 
-## AI 助手须知
+## 课程（Course）
 
-- 工具安装：各工具页「获取方式」区给出 `npx skills add lawyerhsp/…` 命令
-- 工具源码与版本真身：https://github.com/lawyerhsp；工具页底部「机器可读信息」区块含 name/version/license/capabilities 的 YAML 清单
-- 结构化数据：首页 WebSite + Person；文章页 BlogPosting；工具页 SoftwareApplication
-- 站内所有日期均带 ISO `datetime` 属性
-- 联系：hello@example.com（占位）；合作方向：法律 AI · 非诉业务
+- [律师的 AI 工作台](/courses/ai-workbench.html)：系列课 · 共八讲
+- [尽调实战训练营](/courses/agent-dd-bootcamp.html)：线下工作坊 · 两天
+
+## 站点数据
+
+- [首页](/)：目录 + 最近更新 + 热门阅读 + 关于与联系
+- [RSS](/feed.xml) · [站点地图](/sitemap.xml)
+- 工具源码与版本真身：https://github.com/lawyerhsp
 
 ## 引用与许可
 
-- 文章以 CC BY 4.0 提供，引用格式建议：「作者：S. Huang，《标题》，原文 URL，访问日期」
-- 工具以 MIT 提供；工具页含机器可读清单（name/version/license/install）
-- 更正政策：重要更正会更新文章页并在结构化数据中更新 dateModified；勘误与事实核查请联系 hello@example.com（占位）
-- 作者执业身份可通过司法行政公示平台核验（占位链接）；Person 实体的 sameAs 指向 GitHub / 律所官网 / 公众号（占位，部署后补全）
-- 文章页各章节带稳定锚点（#s1、#s2 …），支持精确引用到节
-
-## 注意
-
-域名 `s-huang.example` 为占位；正式部署后请以真实域名为准替换全部 URL。
+- 文章 CC BY 4.0，引用格式：「作者：S. Huang，《标题》，原文 URL，访问日期」
+- 工具 MIT；工具页含 YAML 机器可读清单（name/version/license/install/capabilities）
+- 更正会更新文章页 dateModified；勘误联系 hello@example.com（占位）
+- 作者执业身份可经司法行政公示平台核验（占位链接）；Person sameAs → github.com/lawyerhsp
+- 文章各章节带稳定锚点（#s1、#s2 …）
